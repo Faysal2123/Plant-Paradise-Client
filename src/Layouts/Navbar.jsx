@@ -5,10 +5,10 @@ import { NavLink } from "react-router-dom";
 const Navbar = () => {
     const[isOpen,setIsOpen]=useState(false)
   return (
-    <div className="w-11/12 mx-auto">
-      <div className="navbar bg-base-100">
+    <div className="md:w-11/12 md:mx-auto  ">
+      <div className="navbar ">
         <div className="flex-1">
-          <a className="btn btn-ghost text-3xl font-bold">Plantzo</a>
+          <a className="btn btn-ghost md:text-4xl text-3xl font-bold">Plantzo</a>
         </div>
         <div>
             <ul className="hidden md:flex gap-5 text-base font-semibold mr-5">
@@ -29,7 +29,7 @@ const Navbar = () => {
             </li>
             </ul>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-3">
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
