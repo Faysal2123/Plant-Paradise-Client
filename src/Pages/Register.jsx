@@ -3,11 +3,12 @@ import { useForm } from "react-hook-form";
 import animation1 from "../../public/lottie/Animation1.json"
 import Lottie from "lottie-react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { FaGoogle } from "react-icons/fa";
 
 const Register = () => {
-  const {createUser}=useContext(AuthContext)
+  const {createUser,googleSignIn,setUser}=useContext(AuthContext)
   const navigate=useNavigate()
   const {
     register,
@@ -15,6 +16,22 @@ const Register = () => {
     
     formState: { errors },
   } = useForm();
+  const handleGoogleSignUp = async () => {
+    try {
+      const result = await googleSignIn();
+      const user = result.user;
+
+      setUser(user);
+
+      toast.success("Registration Successful");
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    } catch (err) {
+      console.error(err);
+      toast.error(err?.message);
+    }
+  };
 
   const onSubmit = (data) =>{
     createUser(data.email,data.password)
@@ -27,10 +44,10 @@ const Register = () => {
          },1000)
          toast.success("User Login Successful")
     })
-    console.log(data);
+   
   } 
   return (
-    <div className="flex justify-center  md:flex-row  flex-col items-center min-h-screen bg-gray-100 p-5  ">
+    <div className="flex justify-center  md:flex-row  flex-col items-center min-h-screen bg-gray-100 px-3  pb-5">
         <div className="md:h-[400px] md:w-[400px] h-[150px] w-[150px]">
             <Lottie animationData={animation1}
             ></Lottie>
@@ -93,8 +110,13 @@ const Register = () => {
             
           </div>
           <div className="form-control mt-6">
-            <button className="btn w-full btn-accent py-3 rounded-md text-lg font-semibold shadow-md hover:bg-accent-dark transition-all">Login</button>
+            <button className="btn w-full btn-error py-3 rounded-md text-lg font-semibold shadow-md hover:bg-error-dark transition-all">Register</button>
           </div>
+          <p className="text-center pt-3 mb-3"><small>Already have an account</small><Link className="text-blue-500 ml-1" to='/login'>Login now</Link></p>
+          <div className="divider">OR</div>
+          <button type="button" onClick={handleGoogleSignUp} className="btn  w-full btn-outline btn-error">
+          <FaGoogle size={20}/>
+          </button>
         </form>
       </div>
       <Toaster></Toaster>

@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
     const[isOpen,setIsOpen]=useState(false)
+    const{user, logOut}=useContext(AuthContext)
+    const handleLogOut=()=>{
+      logOut()
+    }
   return (
     <div className="md:w-11/12 md:mx-auto  ">
       <div className="navbar ">
@@ -86,13 +91,22 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a className="justify-between">Dashboard</a>
+              {user ? (<>
+                <li>
+                <Link to='/dashboard' className="justify-between">Dashboard</Link>
               </li>
 
               <li>
-                <a>Logout</a>
+                <Link onClick={handleLogOut}>Logout</Link>
               </li>
+              </>):(<>
+              <li>
+                 <Link to='/login'>Login</Link>
+              </li>
+              <li>
+              <Link to='/register'>Register</Link>
+              </li>
+              </>)}
             </ul>
           </div>
           <button className="md:hidden btn btn-ghost " onClick={()=>setIsOpen(!isOpen)}>{isOpen ? <FiX size={24}/> : <FiMenu size={24}/>}</button>
