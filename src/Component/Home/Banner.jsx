@@ -14,7 +14,7 @@ const Banner = () => {
                 transition={{ duration: 1 }}
             >
                 <img 
-                    className='md:h-[500px] h-72 w-full object-cover md:blur-[2px]' 
+                    className='md:h-[500px] h-72 w-full object-cover md:blur-[2px] brightness-75' 
                     src={banner} 
                     alt="Banner Image" 
                 />

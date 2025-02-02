@@ -98,7 +98,7 @@ const Navbar = () => {
           <button className="md:hidden btn btn-ghost " onClick={()=>setIsOpen(!isOpen)}>{isOpen ? <FiX size={24}/> : <FiMenu size={24}/>}</button>
         </div>
       </div>
-      <div className={`fixed top-0 left-0 h-full w-50 bg-white shadow-lg transform ${isOpen? "translate-x-0":"-translate-x-full"} transition-transform duration-300 ease-in-out md:hidden`}>
+      <div className={`fixed top-0 left-0 h-full w-50 bg-white shadow-lg transform ${isOpen? "translate-x-0":"-translate-x-full"} transition-transform duration-300 ease-in-out md:hidden z-50`}>
         
         <ul className="flex flex-col p-5 text-base font-semibold gap-3">
             <li>
