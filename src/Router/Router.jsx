@@ -7,6 +7,8 @@ import Blog from "../Pages/Blog";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Contact from "../Pages/Contact";
+import PlantDetails from "../Component/Home/PlantDetails";
+import { param } from "framer-motion/client";
 
 const router=createBrowserRouter([
     {
@@ -28,6 +30,11 @@ const router=createBrowserRouter([
             {
                 path:'/blog',
                 element:<Blog></Blog>
+            },
+            {
+               path:'/plant/:id',
+               element:<PlantDetails></PlantDetails>,
+               loader:({params})=>fetch(`http://localhost:5000/plants/${params.id}`)
             },
             {
                path:'/contact',
