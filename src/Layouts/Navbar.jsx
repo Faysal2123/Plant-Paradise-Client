@@ -18,19 +18,19 @@ const Navbar = () => {
         <div>
             <ul className="hidden md:flex gap-5 text-base font-semibold mr-5">
             <li>
-                <NavLink>Home</NavLink>
+                <NavLink to='/'>Home</NavLink>
             </li>
             <li>
-                <NavLink>Shop</NavLink>
+                <NavLink to='/shop'>Shop</NavLink>
             </li>
             <li>
-                <NavLink>Blog</NavLink>
+                <NavLink to='/blog'>Blog</NavLink>
             </li>
             <li>
-                <NavLink>Pages</NavLink>
+                <NavLink to='/page'>Pages</NavLink>
             </li>
             <li>
-                <NavLink>Contact</NavLink>
+                <NavLink to='/contact'>Contact</NavLink>
             </li>
             </ul>
         </div>
@@ -82,8 +82,8 @@ const Navbar = () => {
             >
               <div className="w-10 rounded-full">
                 <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  alt="photoURL"
+                  src={user?.photoURL}
                 />
               </div>
             </div>
