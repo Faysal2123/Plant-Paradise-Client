@@ -5,6 +5,7 @@ import WhyChooseUs from './WhyChooseUs';
 import Newsletter from './Newsletter';
 import CustomerReviews from './CustomerReviews';
 import Plants from './Plants';
+import Slider from './Slider';
 
 const Home = () => {
     return (
@@ -12,8 +13,9 @@ const Home = () => {
             <Banner></Banner>
             <Featured></Featured>
             <Plants></Plants>
+            <Slider></Slider>
             <WhyChooseUs></WhyChooseUs>
-            {/* <CustomerReviews></CustomerReviews> */}
+            <CustomerReviews></CustomerReviews>
             <Newsletter></Newsletter>
         </div>
     );
